@@ -6,6 +6,7 @@ CREATE TABLE `project` (
    `开卡率` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+
 CREATE TABLE `customer` (
     `序号` varchar(255) DEFAULT NULL,
     `客户姓名` varchar(255) DEFAULT NULL,
@@ -122,3 +123,8 @@ CREATE TABLE `order` (
      `分享人` varchar(255) DEFAULT NULL,
      PRIMARY KEY (`序号`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
+CREATE TABLE `old_customer_whitelist` (
+    `商品名称` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci comment "老客白名单";
