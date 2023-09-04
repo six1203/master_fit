@@ -128,3 +128,16 @@ CREATE TABLE `order` (
 CREATE TABLE `old_customer_whitelist` (
     `商品名称` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci comment "老客白名单";
+
+
+-- 新老客标识
+SELECT IF(`商品优惠` = "卡项权益" OR (`商品名称` LIKE '%（CP）%' AND `合计收款` != 0), "老客", "新客") "新老客标识"
+FROM `order`;
+
+
+-- 有效订单
+SELECT * FROM `order`
+WHERE `退款状态` = "-"
+AND NOT (`商品名称` in ("【压缩裤】20分钟", "【气压裤】20分钟") AND `合计收款` = 0)
+AND `支付方式` NOT LIKE "%刷单%"
+AND NOT (`订单备注` LIKE "%刷单%" OR `订单备注` LIKE "%作废%");
